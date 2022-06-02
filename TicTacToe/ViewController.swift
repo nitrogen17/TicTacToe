@@ -168,6 +168,21 @@ class ViewController: UIViewController {
         let feedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
         feedbackGenerator.impactOccurred()
     }
+
+    @IBAction func clickReset(_ sender: UIButton) {
+        _00.image = nil
+        _01.image = nil
+        _02.image = nil
+
+        _10.image = nil
+        _11.image = nil
+        _12.image = nil
+
+        _20.image = nil
+        _21.image = nil
+        _22.image = nil
+    }
+
 }
 
 
