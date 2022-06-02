@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVKit
 
 class ViewController: UIViewController {
 
@@ -24,6 +25,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var _22: UIImageView!
 
     var turn: Bool = false
+
+    var player: AVAudioPlayer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +71,7 @@ class ViewController: UIViewController {
 
     private func click(imageView: UIImageView, closure: () -> Void) {
         vibrateButton()
+        playClickSound()
         guard let _ = imageView.image else {
             if turn {
                 imageView.image = UIImage(named: "imageX.png")
@@ -167,6 +171,31 @@ class ViewController: UIViewController {
     func vibrateButton() {
         let feedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
         feedbackGenerator.impactOccurred()
+    }
+
+    func playClickSound() {
+        guard let url = Bundle.main.url(forResource: "mixkit-arcade-game-jump-coin-216", withExtension: "wav") else { return }
+
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+
+            /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+
+            /* iOS 10 and earlier require the following line:
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
+
+            guard let player = player else { return }
+
+            player.play()
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//                player.play()
+//            }
+
+        } catch let error {
+            print(error.localizedDescription)
+        }
     }
 
     @IBAction func clickReset(_ sender: UIButton) {
