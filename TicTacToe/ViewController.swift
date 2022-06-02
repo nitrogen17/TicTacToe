@@ -23,6 +23,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var _21: UIImageView!
     @IBOutlet weak var _22: UIImageView!
 
+    var turn: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,58 +66,92 @@ class ViewController: UIViewController {
         _12?.addGestureRecognizer(tap)
     }
 
+    private func click(imageView: UIImageView, closure: () -> Void) {
+        vibrateButton()
+        guard let _ = imageView.image else {
+            if turn {
+                imageView.image = UIImage(named: "imageX.png")
+            } else {
+                imageView.image = UIImage(named: "imageO.png")
+            }
+            turn.toggle()
+            closure()
+
+            return
+        }
+        closure()
+    }
+
     @objc func click00() {
         print("Imageview Clicked", #function)
-        _00.shake()
-        _00.shake(0.1)
+        click(imageView: _00) {
+            _00.shake()
+            _00.shake(0.1)
+        }
     }
 
     @objc func click01() {
         print("Imageview Clicked", #function)
-        _01.shake()
-        _01.shake(0.1)
+        click(imageView: _01) {
+            _01.shake()
+            _01.shake(0.1)
+        }
     }
 
     @objc func click02() {
         print("Imageview Clicked", #function)
+        click(imageView: _02) {
         _02.shake()
         _02.shake(0.1)
+        }
     }
 
     @objc func click20() {
         print("Imageview Clicked", #function)
+        click(imageView: _20) {
         _20.shake()
         _20.shake(0.2)
+        }
     }
 
     @objc func click21() {
         print("Imageview Clicked", #function)
+        click(imageView: _21) {
         _21.shake()
         _21.shake(0.2)
+        }
     }
 
     @objc func click22() {
         print("Imageview Clicked", #function)
+        click(imageView: _22) {
         _22.shake()
         _22.shake(0.2)
+        }
     }
 
     @objc func click10() {
         print("Imageview Clicked", #function)
+        click(imageView: _10) {
         _10.shake()
         _10.shake(0.2)
+        }
     }
 
     @objc func click11() {
         print("Imageview Clicked", #function)
+        click(imageView: _11) {
         _11.shake()
         _11.shake(0.2)
+        }
     }
 
     @objc func click12() {
         print("Imageview Clicked", #function)
+        click(imageView: _12) {
         _12.shake()
         _12.shake(0.2)
+        }
     }
 
     private func setupBoard() {
@@ -127,6 +162,11 @@ class ViewController: UIViewController {
         viewShadow.layer.shadowOpacity = 1
         viewShadow.layer.shadowOffset = CGSize.zero
         viewShadow.layer.shadowRadius = 5
+    }
+
+    func vibrateButton() {
+        let feedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
+        feedbackGenerator.impactOccurred()
     }
 }
 
@@ -139,3 +179,4 @@ extension UIView {
         }, completion: nil)
     }
 }
+
