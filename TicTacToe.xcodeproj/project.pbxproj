@@ -19,6 +19,7 @@
 		7B28BFFE2848A99C006CBE27 /* TicTacToeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B28BFFD2848A99C006CBE27 /* TicTacToeUITests.swift */; };
 		7B28C0002848A99C006CBE27 /* TicTacToeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B28BFFF2848A99C006CBE27 /* TicTacToeUITestsLaunchTests.swift */; };
 		7B28C00E2848CCE3006CBE27 /* mixkit-arcade-game-jump-coin-216.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7B28C00D2848CCE3006CBE27 /* mixkit-arcade-game-jump-coin-216.wav */; };
+		7BC3CC51284B040C000C0415 /* mixkit-video-game-mystery-alert-234.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7BC3CC50284B040C000C0415 /* mixkit-video-game-mystery-alert-234.wav */; };
 		8358D30FC9B0A63F92C7BD53 /* Pods_TicTacToeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7933B25B3E2B0C66A61E3449 /* Pods_TicTacToeTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +61,7 @@
 		7B28BFFD2848A99C006CBE27 /* TicTacToeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeUITests.swift; sourceTree = "<group>"; };
 		7B28BFFF2848A99C006CBE27 /* TicTacToeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		7B28C00D2848CCE3006CBE27 /* mixkit-arcade-game-jump-coin-216.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "mixkit-arcade-game-jump-coin-216.wav"; sourceTree = "<group>"; };
+		7BC3CC50284B040C000C0415 /* mixkit-video-game-mystery-alert-234.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "mixkit-video-game-mystery-alert-234.wav"; sourceTree = "<group>"; };
 		7E4297674984669D9C110A3C /* Pods-TicTacToe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TicTacToe.release.xcconfig"; path = "Target Support Files/Pods-TicTacToe/Pods-TicTacToe.release.xcconfig"; sourceTree = "<group>"; };
 		A6875B3DF9563B170A3E346E /* Pods-TicTacToe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TicTacToe.debug.xcconfig"; path = "Target Support Files/Pods-TicTacToe/Pods-TicTacToe.debug.xcconfig"; sourceTree = "<group>"; };
 		B2E096E3A455C00D2C68D46C /* Pods-TicTacToeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TicTacToeTests.release.xcconfig"; path = "Target Support Files/Pods-TicTacToeTests/Pods-TicTacToeTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				7B28C00D2848CCE3006CBE27 /* mixkit-arcade-game-jump-coin-216.wav */,
+				7BC3CC50284B040C000C0415 /* mixkit-video-game-mystery-alert-234.wav */,
 			);
 			path = Sound;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				7B28BFE92848A99C006CBE27 /* LaunchScreen.storyboard in Resources */,
 				7B28BFE62848A99C006CBE27 /* Assets.xcassets in Resources */,
 				7B28BFE42848A99A006CBE27 /* Main.storyboard in Resources */,
+				7BC3CC51284B040C000C0415 /* mixkit-video-game-mystery-alert-234.wav in Resources */,
 				7B28C00E2848CCE3006CBE27 /* mixkit-arcade-game-jump-coin-216.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

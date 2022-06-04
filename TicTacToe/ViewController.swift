@@ -8,9 +8,15 @@
 import UIKit
 import AVKit
 
+enum SoundName: String {
+    case clickCell = "mixkit-arcade-game-jump-coin-216"
+    case clickReset = "mixkit-video-game-mystery-alert-234"
+}
+
 class ViewController: UIViewController {
 
     @IBOutlet weak var board: UIView!
+    @IBOutlet weak var labelPosition: UILabel!
 
     @IBOutlet weak var resetButton: UIButton!
 
@@ -34,6 +40,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         addGradientButton()
+        addViewBoardWithShadow()
 
         var tap = UITapGestureRecognizer(target: self, action: #selector(click00))
         _00?.isUserInteractionEnabled = true
@@ -90,17 +97,68 @@ class ViewController: UIViewController {
 
         resetButton.layer.cornerRadius = 20
         resetButton.clipsToBounds = true
+    }
 
+    private func addViewBoardWithShadow() {
+
+        var view = UILabel()
+        view.frame = CGRect(x: 0, y: 0, width: board.frame.width + 30, height: board.frame.height + 30)
+
+        view.backgroundColor = .white
+
+        var shadows = UIView()
+        shadows.frame = view.frame
+        shadows.clipsToBounds = false
+
+        view.addSubview(shadows)
+
+        let shadowPath0 = UIBezierPath(roundedRect: shadows.bounds, cornerRadius: 20)
+
+        let layer0 = CALayer()
+        layer0.shadowPath = shadowPath0.cgPath
+        layer0.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.15).cgColor
+        layer0.shadowOpacity = 1
+        layer0.shadowRadius = 14
+        layer0.shadowOffset = CGSize(width: 4, height: 4)
+        layer0.bounds = shadows.bounds
+        layer0.position = shadows.center
+
+        shadows.layer.addSublayer(layer0)
+
+        var shapes = UIView()
+        shapes.frame = view.frame
+        shapes.clipsToBounds = true
+
+        view.addSubview(shapes)
+
+        let layer1 = CALayer()
+
+        layer1.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
+        layer1.bounds = shapes.bounds
+        layer1.position = shapes.center
+
+        shapes.layer.addSublayer(layer1)
+        shapes.layer.cornerRadius = 20
+        shapes.layer.borderWidth = 1
+
+        shapes.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
+
+        var parent = self.view!
+
+        board.insertSubview(view, at: 0)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.leadingAnchor.constraint(equalTo: board.leadingAnchor, constant: -15).isActive = true
+        view.topAnchor.constraint(equalTo: board.topAnchor, constant: -15).isActive = true
     }
 
     private func click(imageView: UIImageView, closure: () -> Void) {
         vibrateButton()
-        playClickSound()
+        playClickSound(soundName: .clickCell)
         guard let _ = imageView.image else {
             if turn {
-                imageView.image = UIImage(named: "imageX.png")
+                imageView.image = UIImage(named: "imageX-clean.png")
             } else {
-                imageView.image = UIImage(named: "imageO.png")
+                imageView.image = UIImage(named: "imageO-clean.png")
             }
             turn.toggle()
             closure()
@@ -113,8 +171,8 @@ class ViewController: UIViewController {
     @objc func click00() {
         print("Imageview Clicked", #function)
         click(imageView: _00) {
-            _00.shake()
-            _00.shake(0.1)
+            _00.shakeUp()
+            _00.shakeUp(0.1)
         }
     }
 
@@ -197,8 +255,8 @@ class ViewController: UIViewController {
         feedbackGenerator.impactOccurred()
     }
 
-    func playClickSound() {
-        guard let url = Bundle.main.url(forResource: "mixkit-arcade-game-jump-coin-216", withExtension: "wav") else { return }
+    func playClickSound(soundName: SoundName) {
+        guard let url = Bundle.main.url(forResource: soundName.rawValue, withExtension: "wav") else { return }
 
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
@@ -223,6 +281,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func clickReset(_ sender: UIButton) {
+        playClickSound(soundName: .clickReset)
         _00.image = nil
         _01.image = nil
         _02.image = nil
@@ -242,6 +301,13 @@ class ViewController: UIViewController {
 extension UIView {
     func shake(_ duration: Double? = 0.4) {
         self.transform = CGAffineTransform(translationX: 20, y: 0)
+        UIView.animate(withDuration: duration ?? 0.4, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
+            self.transform = CGAffineTransform.identity
+        }, completion: nil)
+    }
+
+    func shakeUp(_ duration: Double? = 0.4) {
+        self.transform = CGAffineTransform(translationX: 0, y: 20)
         UIView.animate(withDuration: duration ?? 0.4, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
             self.transform = CGAffineTransform.identity
         }, completion: nil)

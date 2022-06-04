@@ -222,8 +222,8 @@
                         <outlet property="_20" destination="vhA-QB-YYt" id="Riv-Yn-27P"/>
                         <outlet property="_21" destination="8R3-7H-GBu" id="Utp-9C-9sQ"/>
                         <outlet property="_22" destination="Ena-mu-EsT" id="7ru-hc-IQK"/>
-                        <outlet property="board" destination="lFQ-Tv-fiP" id="xA3-vv-bRG"/>
-                        <outlet property="resetButton" destination="lFQ-Tv-fiP" id="zFn-HI-cIm"/>
+                        <outlet property="board" destination="cAv-IL-bH8" id="Bga-BO-e0K"/>
+                        <outlet property="resetButton" destination="lFQ-Tv-fiP" id="KiD-IP-rxa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
