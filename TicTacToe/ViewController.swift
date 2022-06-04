@@ -12,6 +12,8 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var board: UIView!
 
+    @IBOutlet weak var resetButton: UIButton!
+
     @IBOutlet weak var _00: UIImageView!
     @IBOutlet weak var _01: UIImageView!
     @IBOutlet weak var _02: UIImageView!
@@ -30,7 +32,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        setupBoard(
+
+        addGradientButton()
 
         var tap = UITapGestureRecognizer(target: self, action: #selector(click00))
         _00?.isUserInteractionEnabled = true
@@ -67,6 +70,27 @@ class ViewController: UIViewController {
         tap = UITapGestureRecognizer(target: self, action: #selector(click12))
         _12?.isUserInteractionEnabled = true
         _12?.addGestureRecognizer(tap)
+    }
+
+    private func addGradientButton() {
+
+        let gradientOrange = CAGradientLayer()
+        gradientOrange.colors = [
+
+          UIColor(red: 1, green: 0.757, blue: 0.027, alpha: 1).cgColor,
+
+          UIColor(red: 0.992, green: 0.494, blue: 0.078, alpha: 1).cgColor
+
+        ]
+        gradientOrange.frame.size = resetButton.frame.size
+        resetButton.layer.addSublayer(gradientOrange)
+
+        resetButton.setTitle("RESET", for: .normal)
+        resetButton.setTitleColor(UIColor.white, for: .normal)
+
+        resetButton.layer.cornerRadius = 20
+        resetButton.clipsToBounds = true
+
     }
 
     private func click(imageView: UIImageView, closure: () -> Void) {

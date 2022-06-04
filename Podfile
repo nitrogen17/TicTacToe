@@ -6,6 +6,7 @@ target 'TicTacToe' do
   use_frameworks!
 
   # Pods for TicTacToe
+  pod 'EMTNeumorphicView'
 
   target 'TicTacToeTests' do
     inherit! :search_paths

@@ -189,8 +189,8 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lFQ-Tv-fiP">
-                                <rect key="frame" x="132" y="708" width="150" height="50"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="132" y="688" width="150" height="50"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="8Bn-pk-Hsq"/>
                                     <constraint firstAttribute="width" constant="150" id="zcg-d8-AEK"/>
@@ -209,7 +209,7 @@
                             <constraint firstItem="cAv-IL-bH8" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="JXq-cy-Xq5"/>
                             <constraint firstItem="cAv-IL-bH8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QSc-ls-Ff6"/>
                             <constraint firstItem="lFQ-Tv-fiP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="e4A-bN-n1f"/>
-                            <constraint firstItem="lFQ-Tv-fiP" firstAttribute="top" secondItem="cAv-IL-bH8" secondAttribute="bottom" constant="100" id="nfp-dl-9Am"/>
+                            <constraint firstItem="lFQ-Tv-fiP" firstAttribute="top" secondItem="cAv-IL-bH8" secondAttribute="bottom" constant="80" id="nfp-dl-9Am"/>
                         </constraints>
                     </view>
                     <connections>
@@ -222,7 +222,8 @@
                         <outlet property="_20" destination="vhA-QB-YYt" id="Riv-Yn-27P"/>
                         <outlet property="_21" destination="8R3-7H-GBu" id="Utp-9C-9sQ"/>
                         <outlet property="_22" destination="Ena-mu-EsT" id="7ru-hc-IQK"/>
-                        <outlet property="board" destination="cAv-IL-bH8" id="1hV-Mx-uGI"/>
+                        <outlet property="board" destination="lFQ-Tv-fiP" id="xA3-vv-bRG"/>
+                        <outlet property="resetButton" destination="lFQ-Tv-fiP" id="zFn-HI-cIm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -236,6 +237,9 @@
         </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
