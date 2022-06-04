@@ -32,6 +32,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var _21: UIImageView!
     @IBOutlet weak var _22: UIImageView!
 
+    var grid = [[".",".","."],
+                [".",".","."],
+                [".",".","."]]
+
+    var boardCheck = [[[Int]]]()
+
     var turn: Bool = false
 
     var player: AVAudioPlayer?
@@ -41,6 +47,8 @@ class ViewController: UIViewController {
 
         addGradientButton()
         addViewBoardWithShadow()
+
+        setupBoard1()
 
         var tap = UITapGestureRecognizer(target: self, action: #selector(click00))
         _00?.isUserInteractionEnabled = true
@@ -77,6 +85,29 @@ class ViewController: UIViewController {
         tap = UITapGestureRecognizer(target: self, action: #selector(click12))
         _12?.isUserInteractionEnabled = true
         _12?.addGestureRecognizer(tap)
+    }
+
+    private func setupBoard1() {
+        boardCheck.append([[0, 0], [0, 1], [0, 2]])
+        boardCheck.append([[1, 0], [1, 1], [1, 2]])
+        boardCheck.append([[2, 0], [2, 1], [2, 2]])
+        boardCheck.append([[0, 0], [1, 0], [2, 0]])
+        boardCheck.append([[0, 1], [1, 1], [2, 1]])
+        boardCheck.append([[0, 2], [1, 2], [2, 2]])
+        boardCheck.append([[0, 0], [1, 1], [2, 2]])
+        boardCheck.append([[2, 0], [1, 1], [0, 2]])
+    }
+
+    func _tictactoe(char: String) {
+        boardCheck.forEach { line in
+            let _a =  grid[ line[0][0] ][ line[0][1] ]
+            let _b =  grid[ line[1][0] ][ line[1][1] ]
+            let _c =  grid[ line[2][0] ][ line[2][1] ]
+
+            if _a == _b && _b == _c && _a == char {
+                print("Tic Tac Toe \(char) at \(line)")
+            }
+        }
     }
 
     private func addGradientButton() {
@@ -151,26 +182,35 @@ class ViewController: UIViewController {
         view.topAnchor.constraint(equalTo: board.topAnchor, constant: -15).isActive = true
     }
 
-    private func click(imageView: UIImageView, closure: () -> Void) {
+    private func click(imageView: UIImageView, position: [Int], closure: () -> Void) {
         vibrateButton()
         playClickSound(soundName: .clickCell)
         guard let _ = imageView.image else {
             if turn {
                 imageView.image = UIImage(named: "imageX-clean.png")
+                grid[position[0]][position[1]] = "X"
             } else {
                 imageView.image = UIImage(named: "imageO-clean.png")
+                grid[position[0]][position[1]] = "O"
             }
             turn.toggle()
+
+            grid.forEach { x in
+                print(x)
+            }
             closure()
 
             return
+        }
+        grid.forEach { x in
+            print(x)
         }
         closure()
     }
 
     @objc func click00() {
         print("Imageview Clicked", #function)
-        click(imageView: _00) {
+        click(imageView: _00, position: [0,0]) {
             _00.shakeUp()
             _00.shakeUp(0.1)
         }
@@ -178,7 +218,7 @@ class ViewController: UIViewController {
 
     @objc func click01() {
         print("Imageview Clicked", #function)
-        click(imageView: _01) {
+        click(imageView: _01, position: [0,1]) {
             _01.shake()
             _01.shake(0.1)
         }
@@ -186,7 +226,7 @@ class ViewController: UIViewController {
 
     @objc func click02() {
         print("Imageview Clicked", #function)
-        click(imageView: _02) {
+        click(imageView: _02, position: [0,2]) {
         _02.shake()
         _02.shake(0.1)
         }
@@ -194,7 +234,7 @@ class ViewController: UIViewController {
 
     @objc func click20() {
         print("Imageview Clicked", #function)
-        click(imageView: _20) {
+        click(imageView: _20, position: [2,0]) {
         _20.shake()
         _20.shake(0.2)
         }
@@ -202,7 +242,7 @@ class ViewController: UIViewController {
 
     @objc func click21() {
         print("Imageview Clicked", #function)
-        click(imageView: _21) {
+        click(imageView: _21, position: [2,1]) {
         _21.shake()
         _21.shake(0.2)
         }
@@ -210,7 +250,7 @@ class ViewController: UIViewController {
 
     @objc func click22() {
         print("Imageview Clicked", #function)
-        click(imageView: _22) {
+        click(imageView: _22, position: [2,2]) {
         _22.shake()
         _22.shake(0.2)
         }
@@ -218,7 +258,7 @@ class ViewController: UIViewController {
 
     @objc func click10() {
         print("Imageview Clicked", #function)
-        click(imageView: _10) {
+        click(imageView: _10, position: [1,0]) {
         _10.shake()
         _10.shake(0.2)
         }
@@ -226,7 +266,7 @@ class ViewController: UIViewController {
 
     @objc func click11() {
         print("Imageview Clicked", #function)
-        click(imageView: _11) {
+        click(imageView: _11, position: [1,1]) {
         _11.shake()
         _11.shake(0.2)
         }
@@ -234,7 +274,7 @@ class ViewController: UIViewController {
 
     @objc func click12() {
         print("Imageview Clicked", #function)
-        click(imageView: _12) {
+        click(imageView: _12, position: [1,2]) {
         _12.shake()
         _12.shake(0.2)
         }
@@ -293,6 +333,14 @@ class ViewController: UIViewController {
         _20.image = nil
         _21.image = nil
         _22.image = nil
+
+        grid = [[".",".","."],
+                   [".",".","."],
+                   [".",".","."]]
+
+        grid.forEach { x in
+            print(x)
+        }
     }
 
 }
