@@ -202,6 +202,13 @@
                                     <action selector="clickReset:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NnF-2f-wPD"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tictactoe" translatesAutoresizingMaskIntoConstraints="NO" id="OdO-rr-UZs">
+                                <rect key="frame" x="88.5" y="61" width="237" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="237" id="C88-pN-2IG"/>
+                                    <constraint firstAttribute="height" constant="160" id="tbd-tu-zpu"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -210,6 +217,8 @@
                             <constraint firstItem="cAv-IL-bH8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QSc-ls-Ff6"/>
                             <constraint firstItem="lFQ-Tv-fiP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="e4A-bN-n1f"/>
                             <constraint firstItem="lFQ-Tv-fiP" firstAttribute="top" secondItem="cAv-IL-bH8" secondAttribute="bottom" constant="80" id="nfp-dl-9Am"/>
+                            <constraint firstItem="OdO-rr-UZs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="s0C-FQ-UcW"/>
+                            <constraint firstItem="OdO-rr-UZs" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="17" id="yJ8-YJ-5uS"/>
                         </constraints>
                     </view>
                     <connections>
@@ -224,6 +233,7 @@
                         <outlet property="_22" destination="Ena-mu-EsT" id="7ru-hc-IQK"/>
                         <outlet property="board" destination="cAv-IL-bH8" id="Bga-BO-e0K"/>
                         <outlet property="resetButton" destination="lFQ-Tv-fiP" id="KiD-IP-rxa"/>
+                        <outlet property="tictactoeLogo" destination="OdO-rr-UZs" id="s0c-xZ-c62"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -232,6 +242,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="tictactoe" width="1465" height="1088"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

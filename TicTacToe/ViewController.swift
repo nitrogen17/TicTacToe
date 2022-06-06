@@ -15,6 +15,8 @@ enum SoundName: String {
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var tictactoeLogo: UIImageView!
+
     @IBOutlet weak var board: UIView!
     @IBOutlet weak var labelPosition: UILabel!
 
@@ -98,15 +100,26 @@ class ViewController: UIViewController {
         boardCheck.append([[2, 0], [1, 1], [0, 2]])
     }
 
-    func _tictactoe(char: String) {
-        boardCheck.forEach { line in
+    func tictactoe(char: String) -> Bool {
+        var flag = false
+        for line in boardCheck {
             let _a =  grid[ line[0][0] ][ line[0][1] ]
             let _b =  grid[ line[1][0] ][ line[1][1] ]
             let _c =  grid[ line[2][0] ][ line[2][1] ]
 
             if _a == _b && _b == _c && _a == char {
+//                playClickSound(soundName: .clickReset)
                 print("Tic Tac Toe \(char) at \(line)")
+                flag = true
+                break
+            } else {
+                flag = false
             }
+        }
+        if flag {
+            return true
+        } else {
+            return false
         }
     }
 
@@ -184,7 +197,7 @@ class ViewController: UIViewController {
 
     private func click(imageView: UIImageView, position: [Int], closure: () -> Void) {
         vibrateButton()
-        playClickSound(soundName: .clickCell)
+
         guard let _ = imageView.image else {
             if turn {
                 imageView.image = UIImage(named: "imageX-clean.png")
@@ -198,6 +211,36 @@ class ViewController: UIViewController {
             grid.forEach { x in
                 print(x)
             }
+
+            if tictactoe(char: grid[position[0]][position[1]]) {
+                playClickSound(soundName: .clickReset)
+                tictactoeLogo.shakeUp()
+                tictactoeLogo.shakeUp(0.1)
+
+                var motivQ = [String]()
+                motivQ.append("“A champion is someone who gets up when he can’t.” – Jack Dempsey")
+                motivQ.append("“Always bear in mind that your own resolution to success is more important than any other one thing.” – Abraham Lincoln")
+                motivQ.append("“What one man can do, another can do!” – Charles Morse")
+                motivQ.append("“It is a rough road that leads to the heights of greatness.” – Seneca")
+                motivQ.append("“Security is mostly a superstition.  Life is either a daring adventure or nothing.” – Helen Keller")
+                motivQ.append(" “Don’t let what you cannot do interfere with what you can do.” – John R. Wooden")
+                motivQ.append("“Men of action are favored by the goddess of good luck.” – George S. Clason")
+                motivQ.append("“Strength and growth come only through continuous effort and struggle.” – Napoleon Hill")
+                motivQ.append("“It’s not whether you get knocked down, it’s whether you get up.” – Vince Lombardi")
+                motivQ.append("“If you can dream it, you can do it.” – Walt Disney")
+
+                if grid[position[0]][position[1]] == "X" {
+                    showAlert(title: "X win!", message: motivQ[Int.random(in: 0 ..< motivQ.count)])
+                } else {
+                    showAlert(title: "O win!", message: motivQ[Int.random(in: 0 ..< motivQ.count)])
+                }
+//                _01.shakeUp()
+//                _01.shakeUp(0.1)
+                return
+            } else {
+                playClickSound(soundName: .clickCell)
+            }
+
             closure()
 
             return
@@ -205,14 +248,15 @@ class ViewController: UIViewController {
         grid.forEach { x in
             print(x)
         }
+        playClickSound(soundName: .clickCell)
         closure()
     }
 
     @objc func click00() {
         print("Imageview Clicked", #function)
         click(imageView: _00, position: [0,0]) {
-            _00.shakeUp()
-            _00.shakeUp(0.1)
+            _00.shake()
+            _00.shake(0.1)
         }
     }
 
@@ -362,3 +406,18 @@ extension UIView {
     }
 }
 
+extension ViewController {
+
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel) {_ in
+            self.clickReset(UIButton())
+        }
+        alert.addAction(action)
+
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+
+}
