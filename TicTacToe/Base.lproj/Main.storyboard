@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -188,7 +188,7 @@
                                     <constraint firstAttribute="height" constant="320" id="thF-Na-39Z"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lFQ-Tv-fiP">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lFQ-Tv-fiP" customClass="PopBounceButton" customModule="PopBounceButton">
                                 <rect key="frame" x="132" y="688" width="150" height="50"/>
                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                 <constraints>
@@ -209,13 +209,23 @@
                                     <constraint firstAttribute="height" constant="160" id="tbd-tu-zpu"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="47l-Ae-tvN" customClass="ConfettiView" customModule="ConfettiView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="228"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="228" id="pDR-Ku-Cg8"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="47l-Ae-tvN" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="2xY-GN-Z5K"/>
                             <constraint firstItem="cAv-IL-bH8" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="JXq-cy-Xq5"/>
                             <constraint firstItem="cAv-IL-bH8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QSc-ls-Ff6"/>
                             <constraint firstItem="lFQ-Tv-fiP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="e4A-bN-n1f"/>
+                            <constraint firstItem="47l-Ae-tvN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="kmK-iZ-ZG5"/>
+                            <constraint firstItem="47l-Ae-tvN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="lAx-FD-GPO"/>
                             <constraint firstItem="lFQ-Tv-fiP" firstAttribute="top" secondItem="cAv-IL-bH8" secondAttribute="bottom" constant="80" id="nfp-dl-9Am"/>
                             <constraint firstItem="OdO-rr-UZs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="s0C-FQ-UcW"/>
                             <constraint firstItem="OdO-rr-UZs" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="17" id="yJ8-YJ-5uS"/>
@@ -232,6 +242,7 @@
                         <outlet property="_21" destination="8R3-7H-GBu" id="Utp-9C-9sQ"/>
                         <outlet property="_22" destination="Ena-mu-EsT" id="7ru-hc-IQK"/>
                         <outlet property="board" destination="cAv-IL-bH8" id="Bga-BO-e0K"/>
+                        <outlet property="confetti" destination="47l-Ae-tvN" id="4ku-Vp-elb"/>
                         <outlet property="resetButton" destination="lFQ-Tv-fiP" id="KiD-IP-rxa"/>
                         <outlet property="tictactoeLogo" destination="OdO-rr-UZs" id="s0c-xZ-c62"/>
                     </connections>

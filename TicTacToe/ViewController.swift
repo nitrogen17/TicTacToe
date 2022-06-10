@@ -7,6 +7,8 @@
 
 import UIKit
 import AVKit
+import PopBounceButton
+import ConfettiView
 
 enum SoundName: String {
     case clickCell = "mixkit-arcade-game-jump-coin-216"
@@ -20,7 +22,24 @@ class ViewController: UIViewController {
     @IBOutlet weak var board: UIView!
     @IBOutlet weak var labelPosition: UILabel!
 
-    @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var resetButton: PopBounceButton! {
+        didSet {
+            resetButton.imageView?.contentMode = .scaleAspectFill
+        }
+    }
+
+    @IBOutlet weak var confetti: ConfettiView!
+
+
+    private let gradientLayer: CAGradientLayer = {
+        let gradient = CAGradientLayer()
+        let greenColor = UIColor(red: 39/255, green: 216/255, blue: 91/255, alpha: 1).cgColor
+        let tealColor = UIColor(red: 30/255, green: 228/255, blue: 188/255, alpha: 1).cgColor
+        gradient.colors = [greenColor, tealColor]
+        gradient.startPoint = CGPoint(x: 0.0, y: 0.5)
+        gradient.endPoint = CGPoint(x: 1.0, y: 0.5)
+        return gradient
+    }()
 
     @IBOutlet weak var _00: UIImageView!
     @IBOutlet weak var _01: UIImageView!
@@ -49,6 +68,9 @@ class ViewController: UIViewController {
 
         addGradientButton()
         addViewBoardWithShadow()
+        addAnimationInResetButton()
+
+        view.backgroundColor = UIColor(red: 243/255, green: 245/255, blue: 248/255, alpha: 1)
 
         setupBoard1()
 
@@ -87,6 +109,16 @@ class ViewController: UIViewController {
         tap = UITapGestureRecognizer(target: self, action: #selector(click12))
         _12?.isUserInteractionEnabled = true
         _12?.addGestureRecognizer(tap)
+    }
+
+    private func addAnimationInResetButton() {
+        resetButton.springSpeed = 15
+        resetButton.springBounciness = 19
+        resetButton.springVelocity = 5
+        resetButton.longPressScaleFactor = 0.9
+
+        resetButton.layer.insertSublayer(gradientLayer, at: 0)
+        gradientLayer.frame = resetButton.bounds
     }
 
     private func setupBoard1() {
@@ -139,7 +171,7 @@ class ViewController: UIViewController {
         resetButton.setTitle("RESET", for: .normal)
         resetButton.setTitleColor(UIColor.white, for: .normal)
 
-        resetButton.layer.cornerRadius = 20
+        resetButton.layer.cornerRadius = resetButton.bounds.height / 2
         resetButton.clipsToBounds = true
     }
 
@@ -230,9 +262,10 @@ class ViewController: UIViewController {
                 motivQ.append("“If you can dream it, you can do it.” – Walt Disney")
 
                 if grid[position[0]][position[1]] == "X" {
-                    showAlert(title: "X win!", message: motivQ[Int.random(in: 0 ..< motivQ.count)])
+                    /// motivQ[Int.random(in: 0 ..< motivQ.count)]
+                    showAlert(title: "X win!", message: "")
                 } else {
-                    showAlert(title: "O win!", message: motivQ[Int.random(in: 0 ..< motivQ.count)])
+                    showAlert(title: "O win!", message: "")
                 }
 //                _01.shakeUp()
 //                _01.shakeUp(0.1)
@@ -410,6 +443,17 @@ extension ViewController {
 
     private func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+
+        confetti.emit(with: [
+          .text("🌟"),
+          .text("✨"),
+          .shape(.circle, .purple),
+          .shape(.triangle, .lightGray)
+        ]) {_ in
+         print("$$ Execute confetti")
+        }
+
+
         let action = UIAlertAction(title: "OK", style: .cancel) {_ in
             self.clickReset(UIButton())
         }

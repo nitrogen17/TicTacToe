@@ -6,7 +6,9 @@ target 'TicTacToe' do
   use_frameworks!
 
   # Pods for TicTacToe
-  pod 'EMTNeumorphicView'
+#  pod 'EMTNeumorphicView'
+  pod 'PopBounceButton'
+  pod 'ConfettiView-NSHipster'
 
   target 'TicTacToeTests' do
     inherit! :search_paths
