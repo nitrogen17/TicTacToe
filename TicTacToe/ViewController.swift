@@ -22,11 +22,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var board: UIView!
     @IBOutlet weak var labelPosition: UILabel!
 
-    @IBOutlet weak var resetButton: PopBounceButton! {
-        didSet {
-            resetButton.imageView?.contentMode = .scaleAspectFill
-        }
-    }
+    @IBOutlet weak var resetButton: PopBounceButton!
 
     @IBOutlet weak var confetti: ConfettiView!
 
