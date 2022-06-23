@@ -15,7 +15,7 @@ enum SoundName: String {
     case clickReset = "mixkit-video-game-mystery-alert-234"
 }
 
-class ViewController: UIViewController {
+class GameVC: UIViewController {
 
     @IBOutlet weak var tictactoeLogo: UIImageView!
 
@@ -61,6 +61,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.navigationItem.setHidesBackButton(true, animated: true)
 
         addGradientButton()
         addViewBoardWithShadow()
@@ -435,7 +437,7 @@ extension UIView {
     }
 }
 
-extension ViewController {
+extension GameVC {
 
     private func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)

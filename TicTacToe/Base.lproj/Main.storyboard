@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hgd-wH-KWC">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -9,10 +9,77 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--HomeVC-->
+        <scene sceneID="grP-P9-eP5">
+            <objects>
+                <viewController id="CZk-IA-H2e" customClass="HomeVC" customModule="TicTacToe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1WJ-ke-ez4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tictactoe" translatesAutoresizingMaskIntoConstraints="NO" id="skD-oj-mGe">
+                                <rect key="frame" x="89" y="61" width="237" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="237" id="ljl-ak-r9e"/>
+                                    <constraint firstAttribute="height" constant="160" id="mJe-PM-LY2"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8q-Cb-JY8" customClass="PopBounceButton" customModule="PopBounceButton">
+                                <rect key="frame" x="132" y="693" width="150" height="50"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="4Ci-iq-Srr"/>
+                                    <constraint firstAttribute="height" constant="50" id="Nkt-yR-7Fn"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="1 VS AI"/>
+                                <connections>
+                                    <action selector="clickOneVsAI:" destination="CZk-IA-H2e" eventType="touchUpInside" id="kmd-ca-2vC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wYb-LK-VmT" customClass="PopBounceButton" customModule="PopBounceButton">
+                                <rect key="frame" x="132" y="585" width="150" height="50"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="9tw-nv-WH5"/>
+                                    <constraint firstAttribute="height" constant="50" id="WUf-8k-cjD"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="1 VS 1"/>
+                                <connections>
+                                    <action selector="clickOneVsOne:" destination="CZk-IA-H2e" eventType="touchUpInside" id="MmT-Yi-m4C"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="cPs-rc-amn"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="cPs-rc-amn" firstAttribute="bottom" secondItem="c8q-Cb-JY8" secondAttribute="bottom" constant="119" id="7bp-IQ-BZF"/>
+                            <constraint firstItem="wYb-LK-VmT" firstAttribute="centerX" secondItem="1WJ-ke-ez4" secondAttribute="centerX" id="IUn-FH-yUE"/>
+                            <constraint firstItem="skD-oj-mGe" firstAttribute="top" secondItem="cPs-rc-amn" secondAttribute="top" constant="17" id="NnF-wu-jaG"/>
+                            <constraint firstItem="c8q-Cb-JY8" firstAttribute="centerX" secondItem="1WJ-ke-ez4" secondAttribute="centerX" id="iIW-Ia-GeD"/>
+                            <constraint firstItem="c8q-Cb-JY8" firstAttribute="top" secondItem="wYb-LK-VmT" secondAttribute="bottom" constant="58" id="xpe-fV-130"/>
+                            <constraint firstItem="skD-oj-mGe" firstAttribute="centerX" secondItem="1WJ-ke-ez4" secondAttribute="centerX" id="yiW-3O-YTk"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZYp-gP-izf"/>
+                    <connections>
+                        <outlet property="onevsai" destination="c8q-Cb-JY8" id="P3c-7G-kea"/>
+                        <outlet property="onevsone" destination="wYb-LK-VmT" id="MEi-GF-Zbb"/>
+                        <outlet property="tictactoelogo" destination="skD-oj-mGe" id="sTE-Hp-pRF"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="goToOneVsOne" id="led-cP-8Mh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yjx-eK-BC4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="40.579710144927539" y="95.758928571428569"/>
+        </scene>
+        <!--GameVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TicTacToe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="GameVC" customModule="TicTacToe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -231,6 +298,7 @@
                             <constraint firstItem="OdO-rr-UZs" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="17" id="yJ8-YJ-5uS"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="KtT-ch-KjE"/>
                     <connections>
                         <outlet property="_00" destination="ysm-xs-Ea2" id="wCB-SU-tS3"/>
                         <outlet property="_01" destination="jSP-Br-8SH" id="Qr8-Bw-mMU"/>
@@ -249,7 +317,24 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="33.333333333333336" y="97.098214285714278"/>
+            <point key="canvasLocation" x="943.47826086956525" y="97.098214285714278"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="s9p-ND-mzk">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Hgd-wH-KWC" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CGo-Ho-XlZ">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="CZk-IA-H2e" kind="relationship" relationship="rootViewController" id="HMQ-Sg-Gr5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="al3-sE-Pfc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-849" y="97"/>
         </scene>
     </scenes>
     <resources>

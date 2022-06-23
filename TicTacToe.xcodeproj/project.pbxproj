@@ -11,7 +11,7 @@
 		63F93F9FD998DD146FD12651 /* Pods_TicTacToe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3046B24B45897C9BFE1DBE82 /* Pods_TicTacToe.framework */; };
 		7B28BFDD2848A99A006CBE27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B28BFDC2848A99A006CBE27 /* AppDelegate.swift */; };
 		7B28BFDF2848A99A006CBE27 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B28BFDE2848A99A006CBE27 /* SceneDelegate.swift */; };
-		7B28BFE12848A99A006CBE27 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B28BFE02848A99A006CBE27 /* ViewController.swift */; };
+		7B28BFE12848A99A006CBE27 /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B28BFE02848A99A006CBE27 /* GameVC.swift */; };
 		7B28BFE42848A99A006CBE27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B28BFE22848A99A006CBE27 /* Main.storyboard */; };
 		7B28BFE62848A99C006CBE27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B28BFE52848A99C006CBE27 /* Assets.xcassets */; };
 		7B28BFE92848A99C006CBE27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B28BFE72848A99C006CBE27 /* LaunchScreen.storyboard */; };
@@ -19,6 +19,7 @@
 		7B28BFFE2848A99C006CBE27 /* TicTacToeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B28BFFD2848A99C006CBE27 /* TicTacToeUITests.swift */; };
 		7B28C0002848A99C006CBE27 /* TicTacToeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B28BFFF2848A99C006CBE27 /* TicTacToeUITestsLaunchTests.swift */; };
 		7B28C00E2848CCE3006CBE27 /* mixkit-arcade-game-jump-coin-216.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7B28C00D2848CCE3006CBE27 /* mixkit-arcade-game-jump-coin-216.wav */; };
+		7BBEA0D62863F532005E2CCE /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBEA0D52863F532005E2CCE /* HomeVC.swift */; };
 		7BC3CC51284B040C000C0415 /* mixkit-video-game-mystery-alert-234.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7BC3CC50284B040C000C0415 /* mixkit-video-game-mystery-alert-234.wav */; };
 		8358D30FC9B0A63F92C7BD53 /* Pods_TicTacToeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7933B25B3E2B0C66A61E3449 /* Pods_TicTacToeTests.framework */; };
 /* End PBXBuildFile section */
@@ -50,7 +51,7 @@
 		7B28BFD92848A99A006CBE27 /* TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B28BFDC2848A99A006CBE27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B28BFDE2848A99A006CBE27 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7B28BFE02848A99A006CBE27 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7B28BFE02848A99A006CBE27 /* GameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
 		7B28BFE32848A99A006CBE27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7B28BFE52848A99C006CBE27 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7B28BFE82848A99C006CBE27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -61,6 +62,7 @@
 		7B28BFFD2848A99C006CBE27 /* TicTacToeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeUITests.swift; sourceTree = "<group>"; };
 		7B28BFFF2848A99C006CBE27 /* TicTacToeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		7B28C00D2848CCE3006CBE27 /* mixkit-arcade-game-jump-coin-216.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "mixkit-arcade-game-jump-coin-216.wav"; sourceTree = "<group>"; };
+		7BBEA0D52863F532005E2CCE /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		7BC3CC50284B040C000C0415 /* mixkit-video-game-mystery-alert-234.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "mixkit-video-game-mystery-alert-234.wav"; sourceTree = "<group>"; };
 		7E4297674984669D9C110A3C /* Pods-TicTacToe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TicTacToe.release.xcconfig"; path = "Target Support Files/Pods-TicTacToe/Pods-TicTacToe.release.xcconfig"; sourceTree = "<group>"; };
 		A6875B3DF9563B170A3E346E /* Pods-TicTacToe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TicTacToe.debug.xcconfig"; path = "Target Support Files/Pods-TicTacToe/Pods-TicTacToe.debug.xcconfig"; sourceTree = "<group>"; };
@@ -135,7 +137,8 @@
 			children = (
 				7B28BFDC2848A99A006CBE27 /* AppDelegate.swift */,
 				7B28BFDE2848A99A006CBE27 /* SceneDelegate.swift */,
-				7B28BFE02848A99A006CBE27 /* ViewController.swift */,
+				7B28BFE02848A99A006CBE27 /* GameVC.swift */,
+				7BBEA0D52863F532005E2CCE /* HomeVC.swift */,
 				7B28C00C2848CCC9006CBE27 /* Sound */,
 				7B28BFE22848A99A006CBE27 /* Main.storyboard */,
 				7B28BFE52848A99C006CBE27 /* Assets.xcassets */,
@@ -422,7 +425,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B28BFE12848A99A006CBE27 /* ViewController.swift in Sources */,
+				7B28BFE12848A99A006CBE27 /* GameVC.swift in Sources */,
+				7BBEA0D62863F532005E2CCE /* HomeVC.swift in Sources */,
 				7B28BFDD2848A99A006CBE27 /* AppDelegate.swift in Sources */,
 				7B28BFDF2848A99A006CBE27 /* SceneDelegate.swift in Sources */,
 			);
