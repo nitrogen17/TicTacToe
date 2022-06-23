@@ -9,6 +9,7 @@ target 'TicTacToe' do
 #  pod 'EMTNeumorphicView'
   pod 'PopBounceButton'
   pod 'ConfettiView-NSHipster'
+  pod 'JGProgressHUD'
 
   target 'TicTacToeTests' do
     inherit! :search_paths

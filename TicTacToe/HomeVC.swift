@@ -14,13 +14,16 @@ class HomeVC: UIViewController {
     @IBOutlet weak var onevsone: PopBounceButton!
     @IBOutlet weak var onevsai: PopBounceButton!
 
+    @IBOutlet weak var onevsai15: PopBounceButton!
+    @IBOutlet weak var undefeatedai: PopBounceButton!
+    @IBOutlet weak var tictactoeultimate: PopBounceButton!
 
     @IBAction func clickOneVsOne(_ sender: PopBounceButton) {
         performSegue(withIdentifier: "goToOneVsOne", sender: nil)
     }
 
     @IBAction func clickOneVsAI(_ sender: PopBounceButton) {
-
+        performSegue(withIdentifier: "goToOneVsAi", sender: nil)
     }
 
 
@@ -37,10 +40,10 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.tictactoelogo.shakeUp()
-            self.tictactoelogo.shakeUp(0.1)
-        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//            self.tictactoelogo.shakeUp()
+//            self.tictactoelogo.shakeUp(0.1)
+//        }
 
         addAnimationInResetButton()
         addGradientButton()
@@ -102,11 +105,46 @@ class HomeVC: UIViewController {
         gradientOrange.frame.size = onevsai.frame.size
         onevsai.layer.addSublayer(gradientOrange)
 
-        onevsai.setTitle("1 VS 1", for: .normal)
+        onevsai.setTitle("1 VS AI", for: .normal)
         onevsai.setTitleColor(UIColor.white, for: .normal)
 
         onevsai.layer.cornerRadius = onevsai.bounds.height / 2
         onevsai.clipsToBounds = true
+
+        // -
+        onevsai15.layer.addSublayer(gradientOrange)
+
+        onevsai15.setTitle("1 VS AI 15 Board", for: .normal)
+        onevsai15.setTitleColor(UIColor.white, for: .normal)
+
+        onevsai15.layer.cornerRadius = onevsai.bounds.height / 2
+        onevsai15.clipsToBounds = true
+
+        // -
+        undefeatedai.layer.addSublayer(gradientOrange)
+
+        undefeatedai.setTitle("Undefeated AI", for: .normal)
+        undefeatedai.setTitleColor(UIColor.white, for: .normal)
+
+        undefeatedai.layer.cornerRadius = onevsai.bounds.height / 2
+        undefeatedai.clipsToBounds = true
+
+        // -
+        tictactoeultimate.layer.addSublayer(gradientOrange)
+
+        tictactoeultimate.setTitle("Tictactoe Ultimate", for: .normal)
+        tictactoeultimate.setTitleColor(UIColor.white, for: .normal)
+
+        tictactoeultimate.layer.cornerRadius = onevsai.bounds.height / 2
+        tictactoeultimate.clipsToBounds = true
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToOneVsAi" {
+            if let nextViewController = segue.destination as? GameVC {
+                nextViewController.enableAi = true
+            }
+        }
     }
 
 

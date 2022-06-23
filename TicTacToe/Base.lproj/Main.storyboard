@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,58 +19,108 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tictactoe" translatesAutoresizingMaskIntoConstraints="NO" id="skD-oj-mGe">
-                                <rect key="frame" x="89" y="61" width="237" height="160"/>
+                                <rect key="frame" x="89" y="84" width="237" height="160"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="237" id="ljl-ak-r9e"/>
                                     <constraint firstAttribute="height" constant="160" id="mJe-PM-LY2"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8q-Cb-JY8" customClass="PopBounceButton" customModule="PopBounceButton">
-                                <rect key="frame" x="132" y="693" width="150" height="50"/>
-                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="4Ci-iq-Srr"/>
-                                    <constraint firstAttribute="height" constant="50" id="Nkt-yR-7Fn"/>
-                                </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="1 VS AI"/>
-                                <connections>
-                                    <action selector="clickOneVsAI:" destination="CZk-IA-H2e" eventType="touchUpInside" id="kmd-ca-2vC"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wYb-LK-VmT" customClass="PopBounceButton" customModule="PopBounceButton">
-                                <rect key="frame" x="132" y="585" width="150" height="50"/>
-                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="9tw-nv-WH5"/>
-                                    <constraint firstAttribute="height" constant="50" id="WUf-8k-cjD"/>
-                                </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="1 VS 1"/>
-                                <connections>
-                                    <action selector="clickOneVsOne:" destination="CZk-IA-H2e" eventType="touchUpInside" id="MmT-Yi-m4C"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="103" translatesAutoresizingMaskIntoConstraints="NO" id="fd1-Lv-fQX">
+                                <rect key="frame" x="132" y="346" width="150" height="391"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="BTw-ki-3F2">
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="108"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wYb-LK-VmT" customClass="PopBounceButton" customModule="PopBounceButton">
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="150" id="9tw-nv-WH5"/>
+                                                    <constraint firstAttribute="height" constant="50" id="WUf-8k-cjD"/>
+                                                </constraints>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="1 VS 1"/>
+                                                <connections>
+                                                    <action selector="clickOneVsOne:" destination="CZk-IA-H2e" eventType="touchUpInside" id="MmT-Yi-m4C"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8q-Cb-JY8" customClass="PopBounceButton" customModule="PopBounceButton">
+                                                <rect key="frame" x="0.0" y="58" width="150" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="150" id="4Ci-iq-Srr"/>
+                                                    <constraint firstAttribute="height" constant="50" id="Nkt-yR-7Fn"/>
+                                                </constraints>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="1 VS AI"/>
+                                                <connections>
+                                                    <action selector="clickOneVsAI:" destination="CZk-IA-H2e" eventType="touchUpInside" id="kmd-ca-2vC"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="I2B-a2-pkY">
+                                        <rect key="frame" x="0.0" y="211" width="150" height="180"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="24W-CE-qaq" customClass="PopBounceButton" customModule="PopBounceButton">
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="150" id="t5X-u2-biz"/>
+                                                    <constraint firstAttribute="height" constant="50" id="y4V-4e-f52"/>
+                                                </constraints>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="1 VS AI 15 Cell"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gHa-QY-lOO" customClass="PopBounceButton" customModule="PopBounceButton">
+                                                <rect key="frame" x="0.0" y="65" width="150" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="150" id="GBR-PI-oM7"/>
+                                                    <constraint firstAttribute="height" constant="50" id="lLJ-pc-hRh"/>
+                                                </constraints>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Undefeated AI"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sk0-gY-025" customClass="PopBounceButton" customModule="PopBounceButton">
+                                                <rect key="frame" x="0.0" y="130" width="150" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="150" id="Et4-Tj-TM9"/>
+                                                    <constraint firstAttribute="height" constant="50" id="FcQ-UA-iTx"/>
+                                                </constraints>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="TicTacToe Ultimate"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cPs-rc-amn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="cPs-rc-amn" firstAttribute="bottom" secondItem="c8q-Cb-JY8" secondAttribute="bottom" constant="119" id="7bp-IQ-BZF"/>
-                            <constraint firstItem="wYb-LK-VmT" firstAttribute="centerX" secondItem="1WJ-ke-ez4" secondAttribute="centerX" id="IUn-FH-yUE"/>
-                            <constraint firstItem="skD-oj-mGe" firstAttribute="top" secondItem="cPs-rc-amn" secondAttribute="top" constant="17" id="NnF-wu-jaG"/>
-                            <constraint firstItem="c8q-Cb-JY8" firstAttribute="centerX" secondItem="1WJ-ke-ez4" secondAttribute="centerX" id="iIW-Ia-GeD"/>
-                            <constraint firstItem="c8q-Cb-JY8" firstAttribute="top" secondItem="wYb-LK-VmT" secondAttribute="bottom" constant="58" id="xpe-fV-130"/>
+                            <constraint firstItem="skD-oj-mGe" firstAttribute="top" secondItem="cPs-rc-amn" secondAttribute="top" constant="40" id="NnF-wu-jaG"/>
+                            <constraint firstItem="fd1-Lv-fQX" firstAttribute="centerX" secondItem="1WJ-ke-ez4" secondAttribute="centerX" id="dIh-ZM-WND"/>
+                            <constraint firstItem="cPs-rc-amn" firstAttribute="bottom" secondItem="fd1-Lv-fQX" secondAttribute="bottom" constant="125" id="stv-5t-Zl7"/>
                             <constraint firstItem="skD-oj-mGe" firstAttribute="centerX" secondItem="1WJ-ke-ez4" secondAttribute="centerX" id="yiW-3O-YTk"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ZYp-gP-izf"/>
                     <connections>
                         <outlet property="onevsai" destination="c8q-Cb-JY8" id="P3c-7G-kea"/>
+                        <outlet property="onevsai15" destination="24W-CE-qaq" id="xjU-ln-qcN"/>
                         <outlet property="onevsone" destination="wYb-LK-VmT" id="MEi-GF-Zbb"/>
                         <outlet property="tictactoelogo" destination="skD-oj-mGe" id="sTE-Hp-pRF"/>
+                        <outlet property="tictactoeultimate" destination="Sk0-gY-025" id="deW-r7-sRz"/>
+                        <outlet property="undefeatedai" destination="gHa-QY-lOO" id="Pf0-F3-NRO"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="goToOneVsOne" id="led-cP-8Mh"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="goToOneVsAi" id="Pva-YS-VJq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yjx-eK-BC4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -337,6 +388,9 @@
             <point key="canvasLocation" x="-849" y="97"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Pva-YS-VJq"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="tictactoe" width="1465" height="1088"/>
         <systemColor name="systemBackgroundColor">

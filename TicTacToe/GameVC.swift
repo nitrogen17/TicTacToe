@@ -9,6 +9,7 @@ import UIKit
 import AVKit
 import PopBounceButton
 import ConfettiView
+import JGProgressHUD
 
 enum SoundName: String {
     case clickCell = "mixkit-arcade-game-jump-coin-216"
@@ -25,6 +26,8 @@ class GameVC: UIViewController {
     @IBOutlet weak var resetButton: PopBounceButton!
 
     @IBOutlet weak var confetti: ConfettiView!
+
+    var enableAi = false
 
 
     private let gradientLayer: CAGradientLayer = {
@@ -53,6 +56,8 @@ class GameVC: UIViewController {
                 [".",".","."],
                 [".",".","."]]
 
+    var cellImage: [String: UIImageView] = .init()
+
     var boardCheck = [[[Int]]]()
 
     var turn: Bool = false
@@ -63,6 +68,18 @@ class GameVC: UIViewController {
         super.viewDidLoad()
 
         self.navigationItem.setHidesBackButton(true, animated: true)
+
+        cellImage["00"] = _00
+        cellImage["01"] = _01
+        cellImage["02"] = _02
+
+        cellImage["10"] = _10
+        cellImage["11"] = _11
+        cellImage["12"] = _12
+
+        cellImage["20"] = _20
+        cellImage["21"] = _21
+        cellImage["22"] = _22
 
         addGradientButton()
         addViewBoardWithShadow()
@@ -225,6 +242,63 @@ class GameVC: UIViewController {
         view.topAnchor.constraint(equalTo: board.topAnchor, constant: -15).isActive = true
     }
 
+    private func cellCheckerIfEmpty() -> Bool {
+        var withEmptyCell = false
+
+        for row in grid {
+            for cell in row {
+                if cell == "." {
+                    withEmptyCell = true
+                }
+            }
+        }
+
+        if withEmptyCell {
+            print("Board Existing Cell!!")
+            return true
+        } else {
+            print("Not existing cell")
+            return false
+        }
+    }
+
+    private func moveAI(xoro: String) {
+        if cellCheckerIfEmpty() {
+            turn.toggle()
+            self.view.isUserInteractionEnabled = false
+            var randomX = Int.random(in: 0..<3)
+            var randomY = Int.random(in: 0..<3)
+            while grid[randomX][randomY] != "." {
+                randomX = Int.random(in: 0..<3)
+                randomY = Int.random(in: 0..<3)
+                print("RANDOMIZED!")
+            }
+            grid[randomX][randomY] = xoro == "X" ? "O" : "X"
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.cellImage["\(String(randomX))\(String(randomY))"]?.image = UIImage(named: (xoro == "X" ? "imageO-clean.png" : "imageX-clean.png"))
+                self.view.isUserInteractionEnabled = true
+
+
+                if self.tictactoe(char: self.grid[randomX][randomY]) {
+                    self.playClickSound(soundName: .clickReset)
+                    self.tictactoeLogo.shakeUp()
+                    self.tictactoeLogo.shakeUp(0.1)
+
+                    if self.grid[randomX][randomY] == "X" {
+                        self.showAlert(title: "X win!", message: "")
+                    } else {
+                        self.showAlert(title: "O win!", message: "")
+                    }
+                    return
+                } else {
+                    self.playClickSound(soundName: .clickCell)
+                }
+
+            }
+        }
+    }
+
     private func click(imageView: UIImageView, position: [Int], closure: () -> Void) {
         vibrateButton()
 
@@ -232,9 +306,16 @@ class GameVC: UIViewController {
             if turn {
                 imageView.image = UIImage(named: "imageX-clean.png")
                 grid[position[0]][position[1]] = "X"
+                if enableAi {
+                    moveAI(xoro: "X")
+                }
+
             } else {
                 imageView.image = UIImage(named: "imageO-clean.png")
                 grid[position[0]][position[1]] = "O"
+                if enableAi {
+                    moveAI(xoro: "O")
+                }
             }
             turn.toggle()
 
@@ -247,26 +328,11 @@ class GameVC: UIViewController {
                 tictactoeLogo.shakeUp()
                 tictactoeLogo.shakeUp(0.1)
 
-                var motivQ = [String]()
-                motivQ.append("“A champion is someone who gets up when he can’t.” – Jack Dempsey")
-                motivQ.append("“Always bear in mind that your own resolution to success is more important than any other one thing.” – Abraham Lincoln")
-                motivQ.append("“What one man can do, another can do!” – Charles Morse")
-                motivQ.append("“It is a rough road that leads to the heights of greatness.” – Seneca")
-                motivQ.append("“Security is mostly a superstition.  Life is either a daring adventure or nothing.” – Helen Keller")
-                motivQ.append(" “Don’t let what you cannot do interfere with what you can do.” – John R. Wooden")
-                motivQ.append("“Men of action are favored by the goddess of good luck.” – George S. Clason")
-                motivQ.append("“Strength and growth come only through continuous effort and struggle.” – Napoleon Hill")
-                motivQ.append("“It’s not whether you get knocked down, it’s whether you get up.” – Vince Lombardi")
-                motivQ.append("“If you can dream it, you can do it.” – Walt Disney")
-
                 if grid[position[0]][position[1]] == "X" {
-                    /// motivQ[Int.random(in: 0 ..< motivQ.count)]
                     showAlert(title: "X win!", message: "")
                 } else {
                     showAlert(title: "O win!", message: "")
                 }
-//                _01.shakeUp()
-//                _01.shakeUp(0.1)
                 return
             } else {
                 playClickSound(soundName: .clickCell)
