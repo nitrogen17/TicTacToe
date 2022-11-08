@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hgd-wH-KWC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hgd-wH-KWC">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tictactoe" translatesAutoresizingMaskIntoConstraints="NO" id="skD-oj-mGe">
-                                <rect key="frame" x="89" y="84" width="237" height="160"/>
+                                <rect key="frame" x="88.5" y="88" width="237" height="160"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="237" id="ljl-ak-r9e"/>
                                     <constraint firstAttribute="height" constant="160" id="mJe-PM-LY2"/>
@@ -321,14 +321,30 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tictactoe" translatesAutoresizingMaskIntoConstraints="NO" id="OdO-rr-UZs">
-                                <rect key="frame" x="88.5" y="61" width="237" height="160"/>
+                                <rect key="frame" x="88.5" y="65" width="237" height="160"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="237" id="C88-pN-2IG"/>
                                     <constraint firstAttribute="height" constant="160" id="tbd-tu-zpu"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BMT-EH-U6N" customClass="PopBounceButton" customModule="PopBounceButton">
+                                <rect key="frame" x="347" y="58" width="50" height="50"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="GiC-uS-CxU"/>
+                                    <constraint firstAttribute="width" constant="50" id="YZx-Zd-K0l"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="X">
+                                    <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="34"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="clickCloseButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZKE-k1-Ijj"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="47l-Ae-tvN" customClass="ConfettiView" customModule="ConfettiView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="228"/>
+                                <rect key="frame" x="0.0" y="48" width="414" height="228"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="228" id="pDR-Ku-Cg8"/>
@@ -341,6 +357,8 @@
                             <constraint firstItem="47l-Ae-tvN" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="2xY-GN-Z5K"/>
                             <constraint firstItem="cAv-IL-bH8" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="JXq-cy-Xq5"/>
                             <constraint firstItem="cAv-IL-bH8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QSc-ls-Ff6"/>
+                            <constraint firstItem="BMT-EH-U6N" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="Uju-GH-lRB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BMT-EH-U6N" secondAttribute="trailing" constant="17" id="Y4T-UU-NPn"/>
                             <constraint firstItem="lFQ-Tv-fiP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="e4A-bN-n1f"/>
                             <constraint firstItem="47l-Ae-tvN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="kmK-iZ-ZG5"/>
                             <constraint firstItem="47l-Ae-tvN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="lAx-FD-GPO"/>
@@ -361,6 +379,7 @@
                         <outlet property="_21" destination="8R3-7H-GBu" id="Utp-9C-9sQ"/>
                         <outlet property="_22" destination="Ena-mu-EsT" id="7ru-hc-IQK"/>
                         <outlet property="board" destination="cAv-IL-bH8" id="Bga-BO-e0K"/>
+                        <outlet property="closeButton" destination="BMT-EH-U6N" id="hEL-8e-OER"/>
                         <outlet property="confetti" destination="47l-Ae-tvN" id="4ku-Vp-elb"/>
                         <outlet property="resetButton" destination="lFQ-Tv-fiP" id="KiD-IP-rxa"/>
                         <outlet property="tictactoeLogo" destination="OdO-rr-UZs" id="s0c-xZ-c62"/>

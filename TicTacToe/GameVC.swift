@@ -12,23 +12,19 @@ import ConfettiView
 import JGProgressHUD
 
 enum SoundName: String {
-    case clickCell = "mixkit-arcade-game-jump-coin-216"
+    case clickCell  = "mixkit-arcade-game-jump-coin-216"
     case clickReset = "mixkit-video-game-mystery-alert-234"
 }
 
 class GameVC: UIViewController {
 
     @IBOutlet weak var tictactoeLogo: UIImageView!
-
     @IBOutlet weak var board: UIView!
-    @IBOutlet weak var labelPosition: UILabel!
-
     @IBOutlet weak var resetButton: PopBounceButton!
-
+    @IBOutlet weak var closeButton: PopBounceButton!
     @IBOutlet weak var confetti: ConfettiView!
 
     var enableAi = false
-
 
     private let gradientLayer: CAGradientLayer = {
         let gradient = CAGradientLayer()
@@ -57,11 +53,8 @@ class GameVC: UIViewController {
                 [".",".","."]]
 
     var cellImage: [String: UIImageView] = .init()
-
     var boardCheck = [[[Int]]]()
-
     var turn: Bool = false
-
     var player: AVAudioPlayer?
 
     override func viewDidLoad() {
@@ -84,6 +77,7 @@ class GameVC: UIViewController {
         addGradientButton()
         addViewBoardWithShadow()
         addAnimationInResetButton()
+        setupCloseButton()
 
         view.backgroundColor = UIColor(red: 243/255, green: 245/255, blue: 248/255, alpha: 1)
 
@@ -155,7 +149,6 @@ class GameVC: UIViewController {
             let _c =  grid[ line[2][0] ][ line[2][1] ]
 
             if _a == _b && _b == _c && _a == char {
-//                playClickSound(soundName: .clickReset)
                 print("Tic Tac Toe \(char) at \(line)")
                 flag = true
                 break
@@ -175,9 +168,9 @@ class GameVC: UIViewController {
         let gradientOrange = CAGradientLayer()
         gradientOrange.colors = [
 
-          UIColor(red: 1, green: 0.757, blue: 0.027, alpha: 1).cgColor,
+            UIColor(red: 1, green: 0.757, blue: 0.027, alpha: 1).cgColor,
 
-          UIColor(red: 0.992, green: 0.494, blue: 0.078, alpha: 1).cgColor
+            UIColor(red: 0.992, green: 0.494, blue: 0.078, alpha: 1).cgColor
 
         ]
         gradientOrange.frame.size = resetButton.frame.size
@@ -192,12 +185,12 @@ class GameVC: UIViewController {
 
     private func addViewBoardWithShadow() {
 
-        var view = UILabel()
+        let view = UILabel()
         view.frame = CGRect(x: 0, y: 0, width: board.frame.width + 30, height: board.frame.height + 30)
 
         view.backgroundColor = .white
 
-        var shadows = UIView()
+        let shadows = UIView()
         shadows.frame = view.frame
         shadows.clipsToBounds = false
 
@@ -216,7 +209,7 @@ class GameVC: UIViewController {
 
         shadows.layer.addSublayer(layer0)
 
-        var shapes = UIView()
+        let shapes = UIView()
         shapes.frame = view.frame
         shapes.clipsToBounds = true
 
@@ -234,12 +227,18 @@ class GameVC: UIViewController {
 
         shapes.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
 
-        var parent = self.view!
-
         board.insertSubview(view, at: 0)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.leadingAnchor.constraint(equalTo: board.leadingAnchor, constant: -15).isActive = true
         view.topAnchor.constraint(equalTo: board.topAnchor, constant: -15).isActive = true
+    }
+
+    private func setupCloseButton() {
+        let button = closeButton!
+        button.frame = CGRect(x: 160, y: 100, width: 50, height: 50)
+        button.layer.cornerRadius = 0.5 * button.bounds.size.width
+        button.clipsToBounds = true
+        view.addSubview(button)
     }
 
     private func cellCheckerIfEmpty() -> Bool {
@@ -271,7 +270,6 @@ class GameVC: UIViewController {
             while grid[randomX][randomY] != "." {
                 randomX = Int.random(in: 0..<3)
                 randomY = Int.random(in: 0..<3)
-                print("RANDOMIZED!")
             }
             grid[randomX][randomY] = xoro == "X" ? "O" : "X"
 
@@ -306,16 +304,9 @@ class GameVC: UIViewController {
             if turn {
                 imageView.image = UIImage(named: "imageX-clean.png")
                 grid[position[0]][position[1]] = "X"
-                if enableAi {
-                    moveAI(xoro: "X")
-                }
-
             } else {
                 imageView.image = UIImage(named: "imageO-clean.png")
                 grid[position[0]][position[1]] = "O"
-                if enableAi {
-                    moveAI(xoro: "O")
-                }
             }
             turn.toggle()
 
@@ -336,6 +327,10 @@ class GameVC: UIViewController {
                 return
             } else {
                 playClickSound(soundName: .clickCell)
+            }
+
+            if enableAi {
+                moveAI(xoro: turn ? "Y" : "X")
             }
 
             closure()
@@ -368,56 +363,56 @@ class GameVC: UIViewController {
     @objc func click02() {
         print("Imageview Clicked", #function)
         click(imageView: _02, position: [0,2]) {
-        _02.shake()
-        _02.shake(0.1)
+            _02.shake()
+            _02.shake(0.1)
         }
     }
 
     @objc func click20() {
         print("Imageview Clicked", #function)
         click(imageView: _20, position: [2,0]) {
-        _20.shake()
-        _20.shake(0.2)
+            _20.shake()
+            _20.shake(0.2)
         }
     }
 
     @objc func click21() {
         print("Imageview Clicked", #function)
         click(imageView: _21, position: [2,1]) {
-        _21.shake()
-        _21.shake(0.2)
+            _21.shake()
+            _21.shake(0.2)
         }
     }
 
     @objc func click22() {
         print("Imageview Clicked", #function)
         click(imageView: _22, position: [2,2]) {
-        _22.shake()
-        _22.shake(0.2)
+            _22.shake()
+            _22.shake(0.2)
         }
     }
 
     @objc func click10() {
         print("Imageview Clicked", #function)
         click(imageView: _10, position: [1,0]) {
-        _10.shake()
-        _10.shake(0.2)
+            _10.shake()
+            _10.shake(0.2)
         }
     }
 
     @objc func click11() {
         print("Imageview Clicked", #function)
         click(imageView: _11, position: [1,1]) {
-        _11.shake()
-        _11.shake(0.2)
+            _11.shake()
+            _11.shake(0.2)
         }
     }
 
     @objc func click12() {
         print("Imageview Clicked", #function)
         click(imageView: _12, position: [1,2]) {
-        _12.shake()
-        _12.shake(0.2)
+            _12.shake()
+            _12.shake(0.2)
         }
     }
 
@@ -443,18 +438,11 @@ class GameVC: UIViewController {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
 
-            /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
             player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
-
-            /* iOS 10 and earlier require the following line:
-            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
 
             guard let player = player else { return }
 
             player.play()
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                player.play()
-//            }
 
         } catch let error {
             print(error.localizedDescription)
@@ -476,12 +464,17 @@ class GameVC: UIViewController {
         _22.image = nil
 
         grid = [[".",".","."],
-                   [".",".","."],
-                   [".",".","."]]
+                [".",".","."],
+                [".",".","."]]
 
         grid.forEach { x in
             print(x)
         }
+    }
+
+    @IBAction func clickCloseButton(_ sender: PopBounceButton) {
+        print("click close button")
+        self.navigationController?.popViewController(animated: true)
     }
 
 }
@@ -509,12 +502,12 @@ extension GameVC {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
         confetti.emit(with: [
-          .text("🌟"),
-          .text("✨"),
-          .shape(.circle, .purple),
-          .shape(.triangle, .lightGray)
+            .text("🌟"),
+            .text("✨"),
+            .shape(.circle, .purple),
+            .shape(.triangle, .lightGray)
         ]) {_ in
-         print("$$ Execute confetti")
+            print("$$ Execute confetti")
         }
 
 
